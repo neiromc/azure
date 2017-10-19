@@ -21,7 +21,8 @@ n
 p
 
 
-w"| fdisk "$DISK" > /dev/null 2>&1
+w"| fdisk "$DISK"  >> $LOG
+#> /dev/null 2>&1
 
 touch $LOCKFILE
 
