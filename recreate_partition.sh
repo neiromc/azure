@@ -27,7 +27,7 @@ touch $LOCKFILE
 
 echo "
 [Unit]
-Description=3adigital Resize XFS
+Description=Resize XFS Once
 After=network-online.target
 
 [Service]
@@ -43,6 +43,10 @@ WantedBy=multi-user.target
 
 systemctl daemon-reload
 systemctl enable $SERVICE_NAME
+
+shutdown +1 -r &
+
+exit 0
 
 else
  echo "Resize disk..."
