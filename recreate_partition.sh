@@ -10,7 +10,7 @@ SERVICE_PATH=/etc/systemd/system/
 LOCKFILE=/${SERVICE_NAME}.lock
 LOG=/${SERVICE_NAME}.log
 
-DISK=$1
+DISK=/dev/sda
 
 if [ ! -f $LOCKFILE ]; then
 echo "Part disk..." >> $LOG
