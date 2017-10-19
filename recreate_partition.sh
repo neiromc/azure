@@ -22,6 +22,7 @@ n
 p
 
 
+p
 w"| fdisk "$DISK"  >> $LOG
 #> /dev/null 2>&1
 
@@ -54,7 +55,9 @@ exit 0
 
 else
  echo "Resize disk..." >> $LOG
- xfs_growfs /dev/sda2 && systemctl disable $SERVICE_NAME && rm $LOCKFILE ${SERVICE_PATH}/${SERVICE_NAME}.service && systemctl daemon-reload
+ xfs_growfs /dev/sda2 >> $LOG
+ 
+ systemctl disable $SERVICE_NAME && rm $LOCKFILE ${SERVICE_PATH}/${SERVICE_NAME}.service && systemctl daemon-reload
 
  echo "Done!" >> $LOG
 fi
