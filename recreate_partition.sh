@@ -8,12 +8,12 @@ SERVICE_NAME=azure-deploy
 SERVICE_PATH=/etc/systemd/system/
 
 LOCKFILE=/${SERVICE_NAME}.lock
-
+LOG=/${SERVICE_NAME}.log
 
 DISK=$1
 
 if [ ! -f $LOCKFILE ]; then
-echo "Part disk..."
+echo "Part disk..." >> $LOG
 ### Make changes in partition table
 echo "d
 
@@ -46,10 +46,14 @@ systemctl enable $SERVICE_NAME
 
 shutdown +1 -r &
 
+echo "reboot..." >> $LOG
+
 exit 0
 
 else
- echo "Resize disk..."
+ echo "Resize disk..." >> $LOG
  xfs_growfs /dev/sda2 && systemctl disable $SERVICE_NAME && rm $LOCKFILE ${SERVICE_PATH}/${SERVICE_NAME}.service && systemctl daemon-reload
+
+ echo "Done!" >> $LOG
 fi
 
