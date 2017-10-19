@@ -19,7 +19,7 @@ p
 
 w"| fdisk "$DISK" > /dev/null 2>&1
 
-touch $LOCKFILE && reboot
+touch $LOCKFILE
 
 else
  echo "Resize disk..."
