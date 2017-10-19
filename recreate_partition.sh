@@ -15,7 +15,8 @@ DISK=/dev/sda
 if [ ! -f $LOCKFILE ]; then
 echo "Part disk..." >> $LOG
 ### Make changes in partition table
-echo "d
+echo "p
+d
 
 n
 p
