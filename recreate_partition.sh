@@ -22,9 +22,12 @@ n
 p
 
 
+
 p
 w"| fdisk "$DISK"  >> $LOG
 #> /dev/null 2>&1
+
+echo "----- END OF FDISK -------"
 
 touch $LOCKFILE
 
@@ -47,9 +50,9 @@ WantedBy=multi-user.target
 systemctl daemon-reload
 systemctl enable $SERVICE_NAME
 
-shutdown +1 -r &
+shutdown +1 -r & >> $LOG
 
-echo "reboot..." >> $LOG
+echo "Reboot scheduled..." >> $LOG
 
 exit 0
 
