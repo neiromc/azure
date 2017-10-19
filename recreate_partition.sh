@@ -15,8 +15,10 @@ p
 w"| fdisk "$DISK" > /dev/null 2>&1
 
 
+exit 0
+
 ###
-reboot
+#reboot
 
 ###
 #xfs_growfs /dev/sda2
